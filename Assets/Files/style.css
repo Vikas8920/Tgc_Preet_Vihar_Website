@@ -688,7 +688,7 @@ nav ul li a:hover{
 }
 .content{
     font-size: 50px;
-    padding: 20px;
+    padding: 22px;
     color: white;
 }
 .slick-prev, .slick-next{
@@ -746,18 +746,12 @@ nav ul li a:hover{
     padding: 0 10px;
 }
 .card-col:nth-child(1) {
-    padding: 21px 0;
+    padding: 20px 0;
 }
 .card-col:nth-child(1) img{
     transform: translateY(-10px);
 }
 .card-col:nth-child(2){
-    padding: 10px 0;
-}
-.card-col:nth-child(3){
-    padding: 10px 0;
-} 
-.card-col:nth-child(4){
     padding: 10px 0;
 }
 .card-row .card-col img{
