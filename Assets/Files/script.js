@@ -2489,27 +2489,57 @@ function isValidPhoneNumber(phone){
     });
 
     // Read more Functionality
-    $('.summary').each(function() {
-        let content = $(this).text();
-        let words = content.split(' ');
+    // $('.summary').each(function() {
+    //     let content = $(this).text();
+    //     let words = content.split(' ');
     
-        if (words.length > 0) {
-            let visibleText = words.slice(0, 0).join(' ') + ' ';
-            let hiddenText = words.slice(0).join(' ');
-            let fullText = visibleText + '<span class="ellipsis"></span><span class="more-text" style="display: none;">' + hiddenText + '</span>';
-            let toggleLink = ' <a href="#" class="read-more">Read more</a>';
+    //     if (words.length > 0) {
+    //         let visibleText = words.slice(0, 0).join(' ') + ' ';
+    //         let hiddenText = words.slice(0).join(' ');
+    //         let fullText = visibleText + '<span class="ellipsis"></span><span class="more-text" style="display: none;">' + hiddenText + '</span>';
+    //         let toggleLink = ' <a href="#" class="read-more">Read more</a>';
           
-          $(this).html(fullText + toggleLink);
-        }
-      });
+    //       $(this).html(fullText + toggleLink);
+    //     }
+    //   });
     
-      $(document).on('click', '.read-more', function(e) {
-        e.preventDefault();
-        let $this = $(this);
-        let $content = $this.parent();
-        let $moreText = $content.find('.more-text');
+    //   $(document).on('click', '.read-more', function(e) {
+    //     e.preventDefault();
+    //     let $this = $(this);
+    //     let $content = $this.parent();
+    //     let $moreText = $content.find('.more-text');
 
-        $moreText.toggle();
-        $this.text($moreText.is(':visible') ? 'Read less' : 'Read more');
-    });
+    //     $moreText.toggle();
+    //     $this.text($moreText.is(':visible') ? 'Read less' : 'Read more');
+    // });
+
+
+    // Tags
+   $('.state-link').on('click', function(event){
+    event.preventDefault();
+
+    let stateName = $(this).data('state');
+    let location = $(this).data('location');
+    let pageTitle = $(this).data('title');
+    let pageDescription = $(this).data('description');
+    let newUrl = window.location.origin + '/' + stateName;
+    
+    // Update URL
+    window.history.pushState({path:newUrl}, '', newUrl);
+
+    // Update Heading
+    $('.page-heading').text(location.charAt(0).toUpperCase() + location.slice(1));
+    
+    // Update Page Title
+    document.title = stateName.charAt(0).toUpperCase() + stateName.slice(1);
+
+    // Update Page Title
+    document.title = pageTitle;
+
+    // Update Meta Description
+    $('meta[name=description]').attr('content', pageDescription);
+
+    // Scroll to top
+    $('html, body').animate({scrollTop: 0});
+});
 });
